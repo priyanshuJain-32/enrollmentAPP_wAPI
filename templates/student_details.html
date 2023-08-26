@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+	<head>
+	<meta charset="UTF-8"/>
+	<title> Student Details </title>
+	<link rel="icon" type="image/x-icon" href="{{url_for('static', filename='graph.png')}}">
+	<meta name="description" content="This page lists student details"/>
+</head>
+	<body>
+<h1> Student Details </h1>
+	<table id = "student-detail">
+		
+		<thead>
+			<tr>
+		<th>Roll Number</th>
+		<th>First Name</th>
+		<th>Last Name</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+		<td>{{ data1['roll_number'] }}</td>
+		<td>{{ data1['first_name'] }}</td>
+		<td>{{ data1['last_name'] }}</td>
+		</tr>
+	</tbody>
+	</table>
+	{% if data2!=[] %}
+<h1> Enrollment list </h1>
+	<table id = "student-enrollments">
+		<thead>
+		<tr>
+		<th>S. No.</th>
+		<th>Course Code</th>
+		<th>Course Name</th>
+		<th>Course Description</th>
+		<th>Actions</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for data in data2 %}
+		<tr>
+		<td>{{ data['course_id'] }}</td>
+		<td>{{ data['course_code'] }}</td>
+		<td>{{ data['course_name'] }}</td>
+		<td>{{ data['course_description'] }}</td>
+		<td>
+			<a href="/student/{{ data1.student_id }}/withdraw/{{ data.course_id }}">Withdraw</a>
+		</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+	</table>
+	{% endif %}
+	<form action="/" method="GET">
+	<br>
+	<div class="align-right">
+	<button type="Go Back">Go Back</button>
+	</div>
+	<br>
+	
+	</form>
+</body>
+</html>

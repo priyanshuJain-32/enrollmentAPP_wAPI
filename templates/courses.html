@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+	<head>
+	<meta charset="UTF-8"/>
+	<title> Courses </title>
+	<meta name="description" content="This page lists course details"/>
+</head>
+	<body>
+	<h1 align="left"> Courses list <a align="right" href="http://127.0.0.1:5000"> Go to Students </a> </h1>
+	<table id = "all-courses">
+		  <thead>
+			{% if (data==[]) %}
+			 <tr>
+			 No courses found. Add the courses now!
+			 </tr>
+			 {% else %}
+			 <tr>
+				<th>SNo</th>
+				<th>Course Code</th>
+				<th>Course Name</th>
+				<th>Course Description</th>
+				<th>Actions</th>
+			 </tr>
+		  </thead>
+		  <tbody>
+		  {% for Data in data %}
+			 <tr>
+				<td>{{ Data.course_id }}</td>
+				<td><a href="/course/{{ Data.course_id }}">{{ Data.course_code }}</a></td>
+				<td>{{ Data.course_name }}</td>
+				<td>{{ Data.course_description }}</td>
+				<td>
+					<a href="/course/{{ Data.course_id }}/update">Update</a>
+					<a href="/course/{{ Data.course_id }}/delete">Delete</a>
+				</td>
+			 </tr>
+		  {% endfor %}
+		  </tbody>
+		 </table>
+		{% endif %}
+	<form action="/course/create" method="GET">
+	<br>
+	<div class="align-right">
+	<button type="Add Course">+Add course</button>
+	</div>
+	<br>
+	
+	</form>
+</body>
+</html>

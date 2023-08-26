@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+	<head>
+	<meta charset="UTF-8"/>
+	<title> Update Student </title>
+	<meta name="description" content="This page is for updating student details"/>
+</head>
+	<body>
+	<h1> Update Student </h1>
+	<form action="/student/{{ Data1.student_id }}/update" method="POST" id="update-student-form">
+		<div>
+		<label>Roll Number:</label>
+		<input type="text" name="roll" value= "{{ Data1.roll_number }}" disabled />
+		</div>
+		<br>
+		<div>
+		<label>First Name:</label>
+		<input type="text" name="f_name" value = "{{ Data1.first_name }}" required />
+		</div>
+		<br>
+		<div>
+		<label>Last Name:</label>
+		<input type="text" name="l_name" value = "{{ Data1.last_name }}" />
+		</div>
+		<br>
+		<div>
+			<label for="courses">Select Course: </label>
+			<select name="course" id="course">
+			{% for Course in Data2 %}
+			<option value={{ Course.course_id }}>{{ Course.course_name }} </option>
+			{% endfor %}
+			</select>
+		</div>
+		<br>
+		<div>
+		<input type="submit" value = "Update">
+		</div>
+		</form>
+	</body>
+</html>

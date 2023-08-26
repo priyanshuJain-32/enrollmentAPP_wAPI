@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+	<head>
+	<meta charset="UTF-8"/>
+	<title> Course Details </title>
+	<link rel="icon" type="image/x-icon" href="{{url_for('static', filename='graph.png')}}">
+	<meta name="description" content="This page lists student details"/>
+</head>
+	<body>
+<h1> Course Details </h1>
+	<table id = "course-detail">
+		
+		<thead>
+			<tr>
+		<th>Course Code</th>
+		<th>Course Name</th>
+		<th>Course Description</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+		<td>{{ data1.course_code }}</td>
+		<td>{{ data1.course_name }}</td>
+		<td>{{ data1.course_description }}</td>
+		</tr>
+	</tbody>
+	</table>
+	{% if data2!=[] %}
+<h1> Enrollment list </h1>
+	<table id = "course-table">
+		<thead>
+		<tr>
+		<th>SNo</th>
+		<th>Roll Number</th>
+		<th>Student First Name</th>
+		<th>Student Last Name</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for data in data2 %}
+		<tr>
+		<td>{{ data.student_id }}</td>
+		<td>{{ data.roll_number }}</td>
+		<td>{{ data.first_name }}</td>
+		<td>{{ data.last_name }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+	</table>
+	{% endif %}
+	<form action="/courses" method="GET">
+	<br>
+	<div class="align-right">
+	<button type="Go Back">Go Back</button>
+	</div>
+	<br>
+	
+	</form>
+</body>
+</html>
